@@ -19,8 +19,8 @@
  */
 typedef struct arg_s
 {
-	int arg;
-	int flag;
+    int arg;
+    int flag;
 } arg_t;
 
 extern arg_t arg;
@@ -36,9 +36,9 @@ extern arg_t arg;
  */
 typedef struct stack_s
 {
-	int n;
-	struct stack_s *prev;
-	struct stack_s *next;
+    int n;
+    struct stack_s *prev;
+    struct stack_s *next;
 } stack_t;
 
 /**
@@ -51,8 +51,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+    char *opcode;
+    void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 /**
@@ -64,24 +64,23 @@ typedef struct instruction_s
  */
 typedef struct line
 {
-	unsigned int number;
-	char **content;
+    unsigned int number;
+    char **content;
 } line_t;
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
+ * struct meta_s - metadata for the program
+ * @buf: buffer for reading lines
+ * @stack: pointer to the head node pointer of stack
+ * @file: pointer to the file being read
  *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: metadata for the program
  */
 typedef struct meta_s
 {
-	char *buf;
-	stack_t *stack;
-	FILE *file;
+    char *buf;
+    stack_t *stack;
+    FILE *file;
 } meta_t;
 
 /* Important functions */
@@ -89,8 +88,8 @@ void (*get_op_func(line_t line, meta_t *meta))(stack_t **, unsigned int);
 int _isalpha(int c);
 
 /* Parse functions */
-void parsefile(FILE *file);
-void parseline(line_t *line, char *buffer);
+void parse_file(char *filename);
+void parse_line(line_t *line, char *buffer);
 
 /* Verification functions */
 bool comment_check(line_t line);
@@ -112,13 +111,7 @@ void free_stack(stack_t **stack);
 void nop(stack_t **stack, unsigned int nline);
 void qpush(stack_t **stack, unsigned int nline);
 void addqu(stack_t **stack, unsigned int nline);
-void addst(stack_t **stack, unsigned int nline);
-
-/* Math functions */
-void subop(stack_t **stack, unsigned int nline);
-void addop(stack_t **stack, unsigned int nline);
-void divop(stack_t **stack, unsigned int nline);
-void mulop(stack_t **stack, unsigned int nline);
-void modop(stack_t **stack, unsigned int nline);
+void pushqu(stack_t **stack, unsigned int nline);
+void stackqu(stack_t **stack, unsigned int nline);
 
 #endif /* MONTY_H */
