@@ -9,13 +9,11 @@
 #include <ctype.h>
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
+ * struct arg_s - Structure for argument and flag
+ * @arg: Argument value
+ * @flag: Flag value
  *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: Structure to hold an argument and flag values.
  */
 typedef struct arg_s
 {
@@ -26,13 +24,12 @@ typedef struct arg_s
 extern arg_t arg;
 
 /**
- * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
- * @prev: points to the previous element of the stack (or queue)
- * @next: points to the next element of the stack (or queue)
+ * struct stack_s - Doubly linked list representation of a stack (or queue)
+ * @n: Integer value
+ * @prev: Pointer to the previous element of the stack (or queue)
+ * @next: Pointer to the next element of the stack (or queue)
  *
- * Description: doubly linked list node structure
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: Doubly linked list node structure for stack, queues, LIFO, FIFO.
  */
 typedef struct stack_s
 {
@@ -42,12 +39,11 @@ typedef struct stack_s
 } stack_t;
 
 /**
- * struct instruction_s - opcode and its function
- * @opcode: the opcode
- * @f: function to handle the opcode
+ * struct instruction_s - Opcode and its corresponding function
+ * @opcode: The opcode
+ * @f: Function pointer to handle the opcode
  *
- * Description: opcode and its function
- * for stack, queues, LIFO, FIFO Holberton project
+ * Description: Structure to hold an opcode and its corresponding function.
  */
 typedef struct instruction_s
 {
@@ -56,11 +52,11 @@ typedef struct instruction_s
 } instruction_t;
 
 /**
- * struct line - contents of line and corresponding number
- * @contents: array of tokens read from the line
- * @number: the line number
+ * struct line - Contents of a line and corresponding number
+ * @contents: Array of tokens read from the line
+ * @number: The line number
  *
- * Description: contents of a line and corresponding number
+ * Description: Structure to hold the contents of a line and its corresponding number.
  */
 typedef struct line
 {
@@ -69,12 +65,12 @@ typedef struct line
 } line_t;
 
 /**
- * struct meta_s - metadata for the program
- * @buf: buffer for reading lines
- * @stack: pointer to the head node pointer of stack
- * @file: pointer to the file being read
+ * struct meta_s - Metadata for the program
+ * @buf: Buffer for reading lines
+ * @stack: Pointer to the head node pointer of the stack
+ * @file: Pointer to the file being read
  *
- * Description: metadata for the program
+ * Description: Structure to hold metadata for the program.
  */
 typedef struct meta_s
 {
@@ -88,7 +84,7 @@ void (*get_op_func(line_t line, meta_t *meta))(stack_t **, unsigned int);
 int _isalpha(int c);
 
 /* Parse functions */
-void parse_file(char *filename);
+void parse_file(FILE *file);
 void parse_line(line_t *line, char *buffer);
 
 /* Verification functions */
